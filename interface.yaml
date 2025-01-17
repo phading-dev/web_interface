@@ -1,0 +1,147 @@
+- kind: Message
+  name: ProfilePage
+- kind: Message
+  name: DaysRange
+  fields:
+    - name: startDate # ISO string
+      type: string
+      index: 1
+    - name: endDate # ISO string
+      type: string
+      index: 2
+- kind: Message
+  name: MonthsRange
+  fields:
+    - name: startMonth # ISO string
+      type: string
+      index: 1
+    - name: endMonth # ISO string
+      type: string
+      index: 2
+- kind: Message
+  name: BillingPage
+  fields:
+    - name: days
+      type: DaysRange
+      index: 1
+    - name: months
+      type: MonthsRange
+      index: 2
+- kind: Message
+  name: EarningsPage
+  fields:
+    - name: days
+      type: DaysRange
+      index: 1
+    - name: months
+      type: MonthsRange
+      index: 2
+- kind: Message
+  name: AccountPage
+  fields:
+    - name: profile
+      type: ProfilePage
+      index: 1
+    - name: billing
+      type: BillingPage
+      index: 2
+    - name: earnings
+      type: EarningsPage
+      index: 3
+- kind: Message
+  name: PlayPage
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: RecommendationPage
+  fields:
+    - name: query
+      type: string
+      index: 1
+    - name: publisherId
+      type: string
+      index: 2
+- kind: Message
+  name: ConsumerMeterPage
+  fields:
+    - name: days
+      type: DaysRange
+      index: 1
+    - name: months
+      type: MonthsRange
+      index: 2
+- kind: Message
+  name: ConsumerPage
+  fields:
+    - name: play
+      type: PlayPage
+      index: 1
+    - name: recommendation
+      type: RecommendationPage
+      index: 2
+    - name: meter
+      type: ConsumerMeterPage
+      index: 3
+- kind: Message
+  name: CatalogPage
+- kind: Message
+  name: EditingSeasonPage
+- kind: Message
+  name: EditingEpisodePage
+  fields:
+    - name: episodeId
+      type: string
+      index: 1
+- kind: Message
+  name: EditingPage
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: editingSeason
+      type: EditingSeasonPage
+      index: 2
+    - name: editingEpisode
+      type: EditingEpisodePage
+      index: 3
+- kind: Message
+  name: PublisherMeterPage
+  fields:
+    - name: days
+      type: DaysRange
+      index: 1
+    - name: months
+      type: MonthsRange
+      index: 2
+- kind: Message
+  name: PublisherPage
+  fields:
+    - name: catalog
+      type: CatalogPage
+      index: 1
+    - name: editing
+      type: EditingPage
+      index: 2
+    - name: meter
+      type: PublisherMeterPage
+      index: 3
+- kind: Message
+  name: RootPage
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+    - name: account
+      type: AccountPage
+      index: 2
+    - name: consumer
+      type: ConsumerPage
+      index: 3
+    - name: publisher
+      type: PublisherPage
+      index: 4
