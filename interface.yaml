@@ -1,5 +1,5 @@
 - kind: Message
-  name: ProfilePage
+  name: Empty
 - kind: Message
   name: DaysRange
   fields:
@@ -40,7 +40,7 @@
   name: AccountPage
   fields:
     - name: profile
-      type: ProfilePage
+      type: Empty
       index: 1
     - name: billing
       type: BillingPage
@@ -88,10 +88,6 @@
       type: ConsumerMeterPage
       index: 3
 - kind: Message
-  name: CatalogPage
-- kind: Message
-  name: EditingSeasonPage
-- kind: Message
   name: EditingEpisodePage
   fields:
     - name: episodeId
@@ -104,7 +100,7 @@
       type: string
       index: 1
     - name: editingSeason
-      type: EditingSeasonPage
+      type: Empty
       index: 2
     - name: editingEpisode
       type: EditingEpisodePage
@@ -122,7 +118,7 @@
   name: PublisherPage
   fields:
     - name: catalog
-      type: CatalogPage
+      type: Empty
       index: 1
     - name: editing
       type: EditingPage

@@ -1,10 +1,10 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 
-export interface ProfilePage {
+export interface Empty {
 }
 
-export let PROFILE_PAGE: MessageDescriptor<ProfilePage> = {
-  name: 'ProfilePage',
+export let EMPTY: MessageDescriptor<Empty> = {
+  name: 'Empty',
   fields: [],
 };
 
@@ -81,7 +81,7 @@ export let EARNINGS_PAGE: MessageDescriptor<EarningsPage> = {
 };
 
 export interface AccountPage {
-  profile?: ProfilePage,
+  profile?: Empty,
   billing?: BillingPage,
   earnings?: EarningsPage,
 }
@@ -91,7 +91,7 @@ export let ACCOUNT_PAGE: MessageDescriptor<AccountPage> = {
   fields: [{
     name: 'profile',
     index: 1,
-    messageType: PROFILE_PAGE,
+    messageType: EMPTY,
   }, {
     name: 'billing',
     index: 2,
@@ -180,22 +180,6 @@ export let CONSUMER_PAGE: MessageDescriptor<ConsumerPage> = {
   }],
 };
 
-export interface CatalogPage {
-}
-
-export let CATALOG_PAGE: MessageDescriptor<CatalogPage> = {
-  name: 'CatalogPage',
-  fields: [],
-};
-
-export interface EditingSeasonPage {
-}
-
-export let EDITING_SEASON_PAGE: MessageDescriptor<EditingSeasonPage> = {
-  name: 'EditingSeasonPage',
-  fields: [],
-};
-
 export interface EditingEpisodePage {
   episodeId?: string,
 }
@@ -211,7 +195,7 @@ export let EDITING_EPISODE_PAGE: MessageDescriptor<EditingEpisodePage> = {
 
 export interface EditingPage {
   seasonId?: string,
-  editingSeason?: EditingSeasonPage,
+  editingSeason?: Empty,
   editingEpisode?: EditingEpisodePage,
 }
 
@@ -224,7 +208,7 @@ export let EDITING_PAGE: MessageDescriptor<EditingPage> = {
   }, {
     name: 'editingSeason',
     index: 2,
-    messageType: EDITING_SEASON_PAGE,
+    messageType: EMPTY,
   }, {
     name: 'editingEpisode',
     index: 3,
@@ -251,7 +235,7 @@ export let PUBLISHER_METER_PAGE: MessageDescriptor<PublisherMeterPage> = {
 };
 
 export interface PublisherPage {
-  catalog?: CatalogPage,
+  catalog?: Empty,
   editing?: EditingPage,
   meter?: PublisherMeterPage,
 }
@@ -261,7 +245,7 @@ export let PUBLISHER_PAGE: MessageDescriptor<PublisherPage> = {
   fields: [{
     name: 'catalog',
     index: 1,
-    messageType: CATALOG_PAGE,
+    messageType: EMPTY,
   }, {
     name: 'editing',
     index: 2,
