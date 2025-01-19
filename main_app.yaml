@@ -127,7 +127,7 @@
       type: PublisherMeterPage
       index: 3
 - kind: Message
-  name: RootPage
+  name: MainApp
   fields:
     - name: accountId
       type: string

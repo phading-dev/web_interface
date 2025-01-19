@@ -257,15 +257,15 @@ export let PUBLISHER_PAGE: MessageDescriptor<PublisherPage> = {
   }],
 };
 
-export interface RootPage {
+export interface MainApp {
   accountId?: string,
   account?: AccountPage,
   consumer?: ConsumerPage,
   publisher?: PublisherPage,
 }
 
-export let ROOT_PAGE: MessageDescriptor<RootPage> = {
-  name: 'RootPage',
+export let MAIN_APP: MessageDescriptor<MainApp> = {
+  name: 'MainApp',
   fields: [{
     name: 'accountId',
     index: 1,
