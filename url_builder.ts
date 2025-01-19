@@ -14,7 +14,7 @@ export class UrlBuilder {
     this.url = new URL(origin);
   }
 
-  public build(webAppDef: WebAppDef<any>, value: any): string {
+  public build<T>(webAppDef: WebAppDef<T>, value: T): string {
     this.url.pathname = webAppDef.path;
     this.url.searchParams.set(PARAM_KEY, JSON.stringify(value));
     return this.url.href;
