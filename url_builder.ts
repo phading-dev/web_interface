@@ -16,9 +16,16 @@ export class UrlBuilder {
     this.url = new URL(origin);
   }
 
-  public build<T>(webAppDef: WebAppDef<T>, value: T): string {
+  public build<T>(
+    webAppDef: WebAppDef<T>,
+    value: T,
+    extraParams: Array<[string, string]> = [],
+  ): string {
     this.url.pathname = webAppDef.path;
     this.url.searchParams.set(PARAM_KEY, JSON.stringify(value));
+    extraParams.forEach(([key, value]) =>
+      this.url.searchParams.set(key, value),
+    );
     return this.url.href;
   }
 }
@@ -32,8 +39,9 @@ export function buildMainAppUrl(builder: UrlBuilder, value: MainApp): string {
 export function buildReplacePrimaryPaymentMethodUrl(
   builder: UrlBuilder,
   value: ReplacePrimaryPaymentMethod,
+  extraParams: Array<[string, string]>,
 ): string {
-  return builder.build(REPLACE_PRIMARY_PAYMENT_METHOD_DEF, value);
+  return builder.build(REPLACE_PRIMARY_PAYMENT_METHOD_DEF, value, extraParams);
 }
 
 export function buildSetConnectedAccountOnboardedUrl(
