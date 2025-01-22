@@ -1,0 +1,6 @@
+- kind: Message
+  name: SetConnectedAccountOnboarded
+  fields:
+    - name: accountId
+      type: string
+      index: 1
