@@ -3,27 +3,46 @@ import {
   REPLACE_PRIMARY_PAYMENT_METHOD,
   ReplacePrimaryPaymentMethod,
 } from "./replace_primary_payment_method";
+import {
+  SET_CONNECTED_ACCOUNT_ONBOARDED,
+  SetConnectedAccountOnboarded,
+} from "./set_connected_account_onboarded";
 import { MessageDescriptor } from "@selfage/message/descriptor";
-import { SET_CONNECTED_ACCOUNT_ONBOARDED, SetConnectedAccountOnboarded } from "./set_connected_account_onboarded";
+
+export interface WebAppStateParam<T> {
+  key: string;
+  value: MessageDescriptor<T>;
+}
 
 export interface WebAppDef<T> {
   path: string;
-  rootPage: MessageDescriptor<T>;
+  state: WebAppStateParam<T>;
+  extraParamKeys?: Array<string>;
 }
 
 export let MAIN_APP_DEF: WebAppDef<MainApp> = {
   path: "/",
-  rootPage: MAIN_APP,
+  state: {
+    key: "e",
+    value: MAIN_APP,
+  },
 };
 
 export let REPLACE_PRIMARY_PAYMENT_METHOD_DEF: WebAppDef<ReplacePrimaryPaymentMethod> =
   {
     path: "/replace_primary_payment_method",
-    rootPage: REPLACE_PRIMARY_PAYMENT_METHOD,
+    state: {
+      key: "e",
+      value: REPLACE_PRIMARY_PAYMENT_METHOD,
+    },
+    extraParamKeys: ["session_id"],
   };
 
 export let SET_CONNECTED_ACCOUNT_ONBOARDED_DEF: WebAppDef<SetConnectedAccountOnboarded> =
   {
     path: "/set_connected_account_onboarded",
-    rootPage: SET_CONNECTED_ACCOUNT_ONBOARDED,
+    state: {
+      key: "e",
+      value: SET_CONNECTED_ACCOUNT_ONBOARDED,
+    },
   };

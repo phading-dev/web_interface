@@ -1,12 +1,15 @@
-import { PARAM_KEY } from "./vars";
-import { MessageDescriptor } from "@selfage/message/descriptor";
+import { WebAppDef } from "./web_apps";
 import { parseMessage } from "@selfage/message/parser";
 
-export function parseUrl<T>(
-  descriptor: MessageDescriptor<T>,
+export function parseRootPage<T>(
+  webApp: WebAppDef<T>,
   thisWindow: Window = window,
-): T {
-  let value = new URLSearchParams(thisWindow.location.search).get(PARAM_KEY);
+): {
+  rootPage: T;
+  extraParams: Map<string, string>;
+} {
+  let searchParams = new URLSearchParams(thisWindow.location.search);
+  let value = searchParams.get(webApp.state.key);
   let obj: any;
   if (value) {
     try {
@@ -15,5 +18,15 @@ export function parseUrl<T>(
       // Ignore
     }
   }
-  return parseMessage(obj, descriptor);
+  let rootPage = parseMessage(obj, webApp.state.value);
+  let extraParams: Map<string, string>;
+  if (webApp.extraParamKeys) {
+    extraParams = new Map();
+    searchParams.forEach((value, key) => {
+      if (webApp.extraParamKeys.includes(key)) {
+        extraParams.set(key, value);
+      }
+    });
+  }
+  return { rootPage, extraParams };
 }

@@ -1,7 +1,7 @@
 import { MainApp } from "./main_app";
 import { ReplacePrimaryPaymentMethod } from "./replace_primary_payment_method";
 import { SetConnectedAccountOnboarded } from "./set_connected_account_onboarded";
-import { ORIGIN, PARAM_KEY } from "./vars";
+import { ORIGIN } from "./vars";
 import {
   MAIN_APP_DEF,
   REPLACE_PRIMARY_PAYMENT_METHOD_DEF,
@@ -17,15 +17,17 @@ export class UrlBuilder {
   }
 
   public build<T>(
-    webAppDef: WebAppDef<T>,
+    webApp: WebAppDef<T>,
     value: T,
-    extraParams: Array<[string, string]> = [],
+    extraParams?: Array<[string, string]>,
   ): string {
-    this.url.pathname = webAppDef.path;
-    this.url.searchParams.set(PARAM_KEY, JSON.stringify(value));
-    extraParams.forEach(([key, value]) =>
-      this.url.searchParams.set(key, value),
-    );
+    this.url.pathname = webApp.path;
+    this.url.searchParams.set(webApp.state.key, JSON.stringify(value));
+    if (extraParams) {
+      extraParams.forEach(([key, value]) => {
+        this.url.searchParams.set(key, value);
+      });
+    }
     return this.url.href;
   }
 }
@@ -39,9 +41,11 @@ export function buildMainAppUrl(builder: UrlBuilder, value: MainApp): string {
 export function buildReplacePrimaryPaymentMethodUrl(
   builder: UrlBuilder,
   value: ReplacePrimaryPaymentMethod,
-  extraParams: Array<[string, string]>,
+  sessionId: string,
 ): string {
-  return builder.build(REPLACE_PRIMARY_PAYMENT_METHOD_DEF, value, extraParams);
+  return builder.build(REPLACE_PRIMARY_PAYMENT_METHOD_DEF, value, [
+    ["session_id", sessionId],
+  ]);
 }
 
 export function buildSetConnectedAccountOnboardedUrl(
