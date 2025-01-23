@@ -6,7 +6,7 @@
     - name: startDate # ISO string
       type: string
       index: 1
-    - name: endDate # ISO string
+    - name: endDate # ISO string. Inclusive.
       type: string
       index: 2
 - kind: Message
@@ -15,27 +15,21 @@
     - name: startMonth # ISO string
       type: string
       index: 1
-    - name: endMonth # ISO string
+    - name: endMonth # ISO string. Inclusive.
       type: string
       index: 2
 - kind: Message
   name: BillingPage
   fields:
-    - name: days
-      type: DaysRange
-      index: 1
-    - name: months
+    - name: range
       type: MonthsRange
-      index: 2
+      index: 1
 - kind: Message
   name: EarningsPage
   fields:
-    - name: days
-      type: DaysRange
-      index: 1
-    - name: months
+    - name: range
       type: MonthsRange
-      index: 2
+      index: 1
 - kind: Message
   name: AccountPage
   fields:

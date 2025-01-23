@@ -45,37 +45,27 @@ export let MONTHS_RANGE: MessageDescriptor<MonthsRange> = {
 };
 
 export interface BillingPage {
-  days?: DaysRange,
-  months?: MonthsRange,
+  range?: MonthsRange,
 }
 
 export let BILLING_PAGE: MessageDescriptor<BillingPage> = {
   name: 'BillingPage',
   fields: [{
-    name: 'days',
+    name: 'range',
     index: 1,
-    messageType: DAYS_RANGE,
-  }, {
-    name: 'months',
-    index: 2,
     messageType: MONTHS_RANGE,
   }],
 };
 
 export interface EarningsPage {
-  days?: DaysRange,
-  months?: MonthsRange,
+  range?: MonthsRange,
 }
 
 export let EARNINGS_PAGE: MessageDescriptor<EarningsPage> = {
   name: 'EarningsPage',
   fields: [{
-    name: 'days',
+    name: 'range',
     index: 1,
-    messageType: DAYS_RANGE,
-  }, {
-    name: 'months',
-    index: 2,
     messageType: MONTHS_RANGE,
   }],
 };
