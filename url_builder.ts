@@ -10,25 +10,22 @@ import {
 } from "./web_apps";
 
 export class UrlBuilder {
-  private url: URL;
-
-  public constructor(origin = ORIGIN) {
-    this.url = new URL(origin);
-  }
+  public constructor(private origin = ORIGIN) {}
 
   public build<T>(
     webApp: WebAppDef<T>,
     value: T,
     extraParams?: Array<[string, string]>,
   ): string {
-    this.url.pathname = webApp.path;
-    this.url.searchParams.set(webApp.state.key, JSON.stringify(value));
+    let url = new URL(this.origin);
+    url.pathname = webApp.path;
+    url.searchParams.set(webApp.state.key, JSON.stringify(value));
     if (extraParams) {
       extraParams.forEach(([key, value]) => {
-        this.url.searchParams.set(key, value);
+        url.searchParams.set(key, value);
       });
     }
-    return this.url.href;
+    return url.href;
   }
 }
 
