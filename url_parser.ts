@@ -1,15 +1,10 @@
-import { WebAppDef } from "./web_apps";
+import { APP, App } from "./app";
+import { PARAM_KEY } from "./constants";
 import { parseMessage } from "@selfage/message/parser";
 
-export function parseRootPage<T>(
-  webApp: WebAppDef<T>,
-  thisWindow: Window = window,
-): {
-  rootPage: T;
-  extraParams: Map<string, string>;
-} {
+export function parse(thisWindow: Window = window): App {
   let searchParams = new URLSearchParams(thisWindow.location.search);
-  let value = searchParams.get(webApp.state.key);
+  let value = searchParams.get(PARAM_KEY);
   let obj: any;
   if (value) {
     try {
@@ -18,15 +13,5 @@ export function parseRootPage<T>(
       // Ignore
     }
   }
-  let rootPage = parseMessage(obj, webApp.state.value);
-  let extraParams: Map<string, string>;
-  if (webApp.extraParamKeys) {
-    extraParams = new Map();
-    searchParams.forEach((value, key) => {
-      if (webApp.extraParamKeys.includes(key)) {
-        extraParams.set(key, value);
-      }
-    });
-  }
-  return { rootPage, extraParams };
+  return parseMessage(obj, APP);
 }

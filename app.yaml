@@ -1,0 +1,15 @@
+- kind: Message
+  name: App
+  fields:
+    - name: main
+      type: MainApp
+      import: ./main_app
+      index: 1
+    - name: replacePrimaryPaymnetMethod
+      type: ReplacePrimaryPaymentMethod
+      import: ./replace_primary_payment_method
+      index: 2
+    - name: setConnectedAccountOnboarded
+      type: SetConnectedAccountOnboarded
+      import: ./set_connected_account_onboarded
+      index: 3

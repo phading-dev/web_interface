@@ -1,6 +1,6 @@
 {
   "name": "@phading/web_interface",
-  "version": "0.1.13",
+  "version": "1.0.1",
   "description": "The interface of Web UI.",
   "repository": {
     "type": "git",
