@@ -1,6 +1,6 @@
 import { APP, App } from "./app";
 import { PARAM_KEY } from "./constants";
-import { parseMessage } from "@selfage/message/parser";
+import { destringifyMessage } from "@selfage/message/stringifier";
 
 export function parse(thisWindow: Window = window): App {
   let searchParams = new URLSearchParams(thisWindow.location.search);
@@ -13,5 +13,5 @@ export function parse(thisWindow: Window = window): App {
       // Ignore
     }
   }
-  return parseMessage(obj, APP);
+  return destringifyMessage(obj, APP);
 }
