@@ -3,6 +3,10 @@ import { PARAM_KEY } from "./constants";
 import { stringifyMessage } from "@selfage/message/stringifier";
 
 export class UrlBuilder {
+  public static create(origin: string): UrlBuilder {
+    return new UrlBuilder(origin);
+  }
+
   public constructor(private origin: string) {}
 
   public build(value: App, extraParams?: Array<[string, string]>): string {
