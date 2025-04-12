@@ -1,0 +1,9 @@
+- kind: Message
+  name: RecommendationPage
+  fields:
+    - name: query
+      type: string
+      index: 1
+    - name: publisherId
+      type: string
+      index: 2

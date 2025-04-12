@@ -1,0 +1,27 @@
+- kind: Enum
+  name: Page
+  values:
+    - name: PLAY
+      value: 1
+    - name: RECOMMENDATION
+      value: 2
+    - name: METER
+      value: 3
+- kind: Message
+  name: ConsumerPage
+  fields:
+    - name: page
+      type: Page
+      index: 1
+    - name: play
+      type: PlayPage
+      import: ./main/consumer/play/page
+      index: 2
+    - name: recommendation
+      type: RecommendationPage
+      import: ./main/consumer/recommendation/page
+      index: 3
+    - name: meter
+      type: MeterPage
+      import: ./main/consumer/meter/page
+      index: 4

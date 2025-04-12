@@ -1,0 +1,9 @@
+- kind: Message
+  name: PlayPage
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2

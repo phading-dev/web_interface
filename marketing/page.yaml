@@ -1,0 +1,13 @@
+- kind: Enum
+  name: Tab
+  values:
+    - name: CONSUMER
+      value: 1
+    - name: PUBLISHER
+      value: 2
+- kind: Message
+  name: MarketingPage
+  fields:
+    - name: tab
+      type: Tab
+      index: 1

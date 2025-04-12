@@ -1,0 +1,20 @@
+- kind: Enum
+  name: Page
+  values:
+    - name: EDIT_SEASON
+      value: 1
+    - name: EDIT_EPISODE
+      value: 2
+- kind: Message
+  name: EditingPage
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: page
+      type: Page
+      index: 2
+    - name: episode
+      type: EpisodePage
+      import: ./main/publisher/editing/episode/page
+      index: 3

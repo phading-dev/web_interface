@@ -1,15 +1,33 @@
+- kind: Enum
+  name: Page
+  values:
+    - name: MAIN
+      value: 1
+    - name: MARKETING
+      value: 2
+    - name: REPLACE_PRIMARY_PAYMENT_METHOD
+      value: 3
+    - name: SET_CONNECTED_ACCOUNT_ONBOARDED
+      value: 4
 - kind: Message
   name: App
   fields:
+    - name: page
+      type: Page
+      index: 1
     - name: main
       type: MainApp
-      import: ./main_app
-      index: 1
+      import: ./main/app
+      index: 2
+    - name: marketing
+      type: MarketingPage
+      import: ./marketing/page
+      index: 3
     - name: replacePrimaryPaymnetMethod
       type: ReplacePrimaryPaymentMethod
-      import: ./replace_primary_payment_method
-      index: 2
+      import: ./replace_primary_payment_method/page
+      index: 4
     - name: setConnectedAccountOnboarded
       type: SetConnectedAccountOnboarded
-      import: ./set_connected_account_onboarded
-      index: 3
+      import: ./set_connected_account_onboarded/page
+      index: 5

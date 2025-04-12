@@ -1,0 +1,23 @@
+- kind: Message
+  name: MainApp
+  fields:
+    - name: auth
+      type: AuthPage
+      import: ./main/auth/page
+      index: 1
+    - name: chooseAccount
+      type: ChooseAccountPage
+      import: ./main/choose_account/page
+      index: 2
+    - name: account
+      type: AccountPage
+      import: ./main/account/page
+      index: 3
+    - name: consumer
+      type: ConsumerPage
+      import: ./main/consumer/page
+      index: 4
+    - name: publisher
+      type: PublisherPage
+      import: ./main/publisher/page
+      index: 5

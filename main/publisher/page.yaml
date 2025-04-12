@@ -1,0 +1,23 @@
+- kind: Enum
+  name: Page
+  values:
+    - name: CATALOG
+      value: 1
+    - name: EDITING
+      value: 2
+    - name: METER
+      value: 3
+- kind: Message
+  name: PublisherPage
+  fields:
+    - name: page
+      type: Page
+      index: 1
+    - name: editing
+      type: EditingPage
+      import: ./main/publisher/editing/page
+      index: 2
+    - name: meter
+      type: MeterPage
+      import: ./main/publisher/meter/page
+      index: 3

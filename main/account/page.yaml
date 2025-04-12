@@ -1,0 +1,19 @@
+- kind: Message
+  name: AccountPage
+  fields:
+    - name: profile
+      type: Empty
+      import: ./empty
+      index: 1
+    - name: payment
+      type: Empty
+      import: ./empty
+      index: 2
+    - name: payout
+      type: Empty
+      import: ./empty
+      index: 3
+    - name: statements
+      type: Empty
+      import: ./empty
+      index: 4

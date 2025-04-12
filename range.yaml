@@ -1,0 +1,18 @@
+- kind: Message
+  name: DaysRange
+  fields:
+    - name: startDate # ISO string
+      type: string
+      index: 1
+    - name: endDate # ISO string. Inclusive.
+      type: string
+      index: 2
+- kind: Message
+  name: MonthsRange
+  fields:
+    - name: startMonth # ISO string
+      type: string
+      index: 1
+    - name: endMonth # ISO string. Inclusive.
+      type: string
+      index: 2
