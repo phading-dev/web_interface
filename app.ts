@@ -1,62 +1,51 @@
-import { EnumDescriptor, MessageDescriptor } from '@selfage/message/descriptor';
-import { MainApp, MAIN_APP } from './main/app';
-import { MarketingPage, MARKETING_PAGE } from './marketing/page';
-import { ReplacePrimaryPaymentMethod, REPLACE_PRIMARY_PAYMENT_METHOD } from './replace_primary_payment_method/page';
-import { SetConnectedAccountOnboarded, SET_CONNECTED_ACCOUNT_ONBOARDED } from './set_connected_account_onboarded/page';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { MainAppRl, MAIN_APP_RL } from './main/app';
 
-export enum Page {
-  MAIN = 1,
-  MARKETING = 2,
-  REPLACE_PRIMARY_PAYMENT_METHOD = 3,
-  SET_CONNECTED_ACCOUNT_ONBOARDED = 4,
+export interface ReplacePrimaryPaymentMethodRl {
+  accountId?: string,
 }
 
-export let PAGE: EnumDescriptor<Page> = {
-  name: 'Page',
-  values: [{
-    name: 'MAIN',
-    value: 1,
-  }, {
-    name: 'MARKETING',
-    value: 2,
-  }, {
-    name: 'REPLACE_PRIMARY_PAYMENT_METHOD',
-    value: 3,
-  }, {
-    name: 'SET_CONNECTED_ACCOUNT_ONBOARDED',
-    value: 4,
-  }]
-}
-
-export interface App {
-  page?: Page,
-  main?: MainApp,
-  marketing?: MarketingPage,
-  replacePrimaryPaymnetMethod?: ReplacePrimaryPaymentMethod,
-  setConnectedAccountOnboarded?: SetConnectedAccountOnboarded,
-}
-
-export let APP: MessageDescriptor<App> = {
-  name: 'App',
+export let REPLACE_PRIMARY_PAYMENT_METHOD_RL: MessageDescriptor<ReplacePrimaryPaymentMethodRl> = {
+  name: 'ReplacePrimaryPaymentMethodRl',
   fields: [{
-    name: 'page',
+    name: 'accountId',
     index: 1,
-    enumType: PAGE,
-  }, {
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface SetConnectedAccountOnboardedRl {
+  accountId?: string,
+}
+
+export let SET_CONNECTED_ACCOUNT_ONBOARDED_RL: MessageDescriptor<SetConnectedAccountOnboardedRl> = {
+  name: 'SetConnectedAccountOnboardedRl',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface AppRl {
+  main?: MainAppRl,
+  replacePrimaryPaymentMethod?: ReplacePrimaryPaymentMethodRl,
+  setConnectedAccountOnboarded?: SetConnectedAccountOnboardedRl,
+}
+
+export let APP_RL: MessageDescriptor<AppRl> = {
+  name: 'AppRl',
+  fields: [{
     name: 'main',
+    index: 1,
+    messageType: MAIN_APP_RL,
+  }, {
+    name: 'replacePrimaryPaymentMethod',
     index: 2,
-    messageType: MAIN_APP,
-  }, {
-    name: 'marketing',
-    index: 3,
-    messageType: MARKETING_PAGE,
-  }, {
-    name: 'replacePrimaryPaymnetMethod',
-    index: 4,
-    messageType: REPLACE_PRIMARY_PAYMENT_METHOD,
+    messageType: REPLACE_PRIMARY_PAYMENT_METHOD_RL,
   }, {
     name: 'setConnectedAccountOnboarded',
-    index: 5,
-    messageType: SET_CONNECTED_ACCOUNT_ONBOARDED,
+    index: 3,
+    messageType: SET_CONNECTED_ACCOUNT_ONBOARDED_RL,
   }],
 };

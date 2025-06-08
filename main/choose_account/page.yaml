@@ -1,6 +1,0 @@
-- kind: Message
-  name: ChooseAccountPage
-  fields:
-    - name: preSelectedAccountId
-      type: string
-      index: 1

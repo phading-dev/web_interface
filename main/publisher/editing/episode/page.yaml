@@ -1,6 +1,0 @@
-- kind: Message
-  name: EpisodePage
-  fields:
-    - name: episodeId
-      type: string
-      index: 1

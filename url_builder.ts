@@ -1,22 +1,19 @@
-import { APP, App } from "./app";
+import { APP_RL, AppRl } from "./app";
 import { PARAM_KEY } from "./constants";
 import { stringifyMessage } from "@selfage/message/stringifier";
 
-export class UrlBuilder {
-  public static create(origin: string): UrlBuilder {
-    return new UrlBuilder(origin);
+// TODO: Figure out a way to define extraParams in the APP message.
+export function buildUrl(
+  origin: string,
+  value: AppRl,
+  extraParams?: Array<[string, string]>,
+): string {
+  let url = new URL(origin);
+  url.searchParams.set(PARAM_KEY, stringifyMessage(value, APP_RL));
+  if (extraParams) {
+    extraParams.forEach(([key, value]) => {
+      url.searchParams.set(key, value);
+    });
   }
-
-  public constructor(private origin: string) {}
-
-  public build(value: App, extraParams?: Array<[string, string]>): string {
-    let url = new URL(this.origin);
-    url.searchParams.set(PARAM_KEY, stringifyMessage(value, APP));
-    if (extraParams) {
-      extraParams.forEach(([key, value]) => {
-        url.searchParams.set(key, value);
-      });
-    }
-    return url.href;
-  }
+  return url.href;
 }

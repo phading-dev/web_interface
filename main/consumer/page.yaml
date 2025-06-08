@@ -1,27 +1,76 @@
 - kind: Enum
-  name: Page
+  name: SearchTarget
   values:
-    - name: PLAY
+    - name: SEASON
       value: 1
-    - name: RECOMMENDATION
+    - name: PUBLISHER
       value: 2
-    - name: METER
-      value: 3
 - kind: Message
-  name: ConsumerPage
+  name: SearchPageRl
   fields:
-    - name: page
-      type: Page
+    - name: searchTarget
+      type: SearchTarget
       index: 1
-    - name: play
-      type: PlayPage
-      import: ./main/consumer/play/page
+    - name: query
+      type: string
       index: 2
-    - name: recommendation
-      type: RecommendationPage
-      import: ./main/consumer/recommendation/page
+- kind: Message
+  name: SeasonDetailsPageRl
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: PlayPageRl
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: PublisherShowroomPageRl
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+- kind: Message
+  name: ConsumerPageRl
+  fields:
+    - name: home
+      type: Empty
+      import: ./empty
+      index: 1
+    - name: listTopRated
+      type: Empty
+      import: ./empty
+      index: 2
+    - name: listRecentPremieres
+      type: Empty
+      import: ./empty
       index: 3
-    - name: meter
-      type: MeterPage
-      import: ./main/consumer/meter/page
+    - name: search
+      type: SearchPageRl
       index: 4
+    - name: seasonDetails
+      type: SeasonDetailsPageRl
+      index: 5
+    - name: play
+      type: PlayPageRl
+      index: 6
+    - name: publisherShowroom
+      type: PublisherShowroomPageRl
+      index: 7
+    - name: history
+      type: Empty
+      import: ./empty
+      index: 8
+    - name: watchLater
+      type: Empty
+      import: ./empty
+      index: 9
+    - name: usage
+      type: Empty
+      import: ./empty
+      index: 10

@@ -1,15 +1,15 @@
 import { Empty, EMPTY } from '../../empty';
 import { MessageDescriptor } from '@selfage/message/descriptor';
 
-export interface AccountPage {
+export interface AccountPageRl {
   profile?: Empty,
   payment?: Empty,
   payout?: Empty,
   statements?: Empty,
 }
 
-export let ACCOUNT_PAGE: MessageDescriptor<AccountPage> = {
-  name: 'AccountPage',
+export let ACCOUNT_PAGE_RL: MessageDescriptor<AccountPageRl> = {
+  name: 'AccountPageRl',
   fields: [{
     name: 'profile',
     index: 1,

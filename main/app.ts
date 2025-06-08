@@ -1,39 +1,45 @@
-import { AuthPage, AUTH_PAGE } from './auth/page';
-import { ChooseAccountPage, CHOOSE_ACCOUNT_PAGE } from './choose_account/page';
-import { AccountPage, ACCOUNT_PAGE } from './account/page';
-import { ConsumerPage, CONSUMER_PAGE } from './consumer/page';
-import { PublisherPage, PUBLISHER_PAGE } from './publisher/page';
-import { MessageDescriptor } from '@selfage/message/descriptor';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { AccountPageRl, ACCOUNT_PAGE_RL } from './account/page';
+import { ConsumerPageRl, CONSUMER_PAGE_RL } from './consumer/page';
+import { PublisherPageRl, PUBLISHER_PAGE_RL } from './publisher/page';
 
-export interface MainApp {
-  auth?: AuthPage,
-  chooseAccount?: ChooseAccountPage,
-  account?: AccountPage,
-  consumer?: ConsumerPage,
-  publisher?: PublisherPage,
+export interface ChooseAccountPageRl {
+  accountId?: string,
 }
 
-export let MAIN_APP: MessageDescriptor<MainApp> = {
-  name: 'MainApp',
+export let CHOOSE_ACCOUNT_PAGE_RL: MessageDescriptor<ChooseAccountPageRl> = {
+  name: 'ChooseAccountPageRl',
   fields: [{
-    name: 'auth',
+    name: 'accountId',
     index: 1,
-    messageType: AUTH_PAGE,
-  }, {
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface MainAppRl {
+  chooseAccount?: ChooseAccountPageRl,
+  account?: AccountPageRl,
+  consumer?: ConsumerPageRl,
+  publisher?: PublisherPageRl,
+}
+
+export let MAIN_APP_RL: MessageDescriptor<MainAppRl> = {
+  name: 'MainAppRl',
+  fields: [{
     name: 'chooseAccount',
-    index: 2,
-    messageType: CHOOSE_ACCOUNT_PAGE,
+    index: 1,
+    messageType: CHOOSE_ACCOUNT_PAGE_RL,
   }, {
     name: 'account',
-    index: 3,
-    messageType: ACCOUNT_PAGE,
+    index: 2,
+    messageType: ACCOUNT_PAGE_RL,
   }, {
     name: 'consumer',
-    index: 4,
-    messageType: CONSUMER_PAGE,
+    index: 3,
+    messageType: CONSUMER_PAGE_RL,
   }, {
     name: 'publisher',
-    index: 5,
-    messageType: PUBLISHER_PAGE,
+    index: 4,
+    messageType: PUBLISHER_PAGE_RL,
   }],
 };

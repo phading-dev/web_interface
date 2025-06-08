@@ -1,6 +1,0 @@
-- kind: Message
-  name: AuthPage
-  fields:
-    - name: initAccountType
-      type: number # Intentionally remove the dependency on UserService.
-      index: 1

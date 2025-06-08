@@ -1,46 +1,99 @@
-import { EnumDescriptor, MessageDescriptor } from '@selfage/message/descriptor';
-import { EditingPage, EDITING_PAGE } from './editing/page';
-import { MeterPage, METER_PAGE } from './meter/page';
+import { SeasonState, SEASON_STATE } from '@phading/product_service_interface/show/season_state';
+import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { DaysRange, DAYS_RANGE, MonthsRange, MONTHS_RANGE } from '../../range';
+import { Empty, EMPTY } from '../../empty';
 
-export enum Page {
-  CATALOG = 1,
-  EDITING = 2,
-  METER = 3,
+export interface ListPageRl {
+  seasonState?: SeasonState,
 }
 
-export let PAGE: EnumDescriptor<Page> = {
-  name: 'Page',
-  values: [{
-    name: 'CATALOG',
-    value: 1,
-  }, {
-    name: 'EDITING',
-    value: 2,
-  }, {
-    name: 'METER',
-    value: 3,
-  }]
-}
-
-export interface PublisherPage {
-  page?: Page,
-  editing?: EditingPage,
-  meter?: MeterPage,
-}
-
-export let PUBLISHER_PAGE: MessageDescriptor<PublisherPage> = {
-  name: 'PublisherPage',
+export let LIST_PAGE_RL: MessageDescriptor<ListPageRl> = {
+  name: 'ListPageRl',
   fields: [{
-    name: 'page',
+    name: 'seasonState',
     index: 1,
-    enumType: PAGE,
+    enumType: SEASON_STATE,
+  }],
+};
+
+export interface SearchPageRl {
+  seasonState?: SeasonState,
+  query?: string,
+}
+
+export let SEARCH_PAGE_RL: MessageDescriptor<SearchPageRl> = {
+  name: 'SearchPageRl',
+  fields: [{
+    name: 'seasonState',
+    index: 1,
+    enumType: SEASON_STATE,
   }, {
-    name: 'editing',
+    name: 'query',
     index: 2,
-    messageType: EDITING_PAGE,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface SeasonDetailsPageRl {
+  seasonId?: string,
+}
+
+export let SEASON_DETAILS_PAGE_RL: MessageDescriptor<SeasonDetailsPageRl> = {
+  name: 'SeasonDetailsPageRl',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UsagePageRl {
+  days?: DaysRange,
+  months?: MonthsRange,
+}
+
+export let USAGE_PAGE_RL: MessageDescriptor<UsagePageRl> = {
+  name: 'UsagePageRl',
+  fields: [{
+    name: 'days',
+    index: 1,
+    messageType: DAYS_RANGE,
   }, {
-    name: 'meter',
+    name: 'months',
+    index: 2,
+    messageType: MONTHS_RANGE,
+  }],
+};
+
+export interface PublisherPageRl {
+  list?: ListPageRl,
+  search?: SearchPageRl,
+  create?: Empty,
+  seasonDetails?: SeasonDetailsPageRl,
+  usage?: UsagePageRl,
+}
+
+export let PUBLISHER_PAGE_RL: MessageDescriptor<PublisherPageRl> = {
+  name: 'PublisherPageRl',
+  fields: [{
+    name: 'list',
+    index: 1,
+    messageType: LIST_PAGE_RL,
+  }, {
+    name: 'search',
+    index: 2,
+    messageType: SEARCH_PAGE_RL,
+  }, {
+    name: 'create',
     index: 3,
-    messageType: METER_PAGE,
+    messageType: EMPTY,
+  }, {
+    name: 'seasonDetails',
+    index: 4,
+    messageType: SEASON_DETAILS_PAGE_RL,
+  }, {
+    name: 'usage',
+    index: 5,
+    messageType: USAGE_PAGE_RL,
   }],
 };

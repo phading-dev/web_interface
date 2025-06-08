@@ -1,23 +1,53 @@
-- kind: Enum
-  name: Page
-  values:
-    - name: CATALOG
-      value: 1
-    - name: EDITING
-      value: 2
-    - name: METER
-      value: 3
 - kind: Message
-  name: PublisherPage
+  name: ListPageRl
   fields:
-    - name: page
-      type: Page
+    - name: seasonState
+      type: SeasonState
+      import: "@phading/product_service_interface/show/season_state"
       index: 1
-    - name: editing
-      type: EditingPage
-      import: ./main/publisher/editing/page
+- kind: Message
+  name: SearchPageRl
+  fields:
+    - name: seasonState
+      type: SeasonState
+      import: "@phading/product_service_interface/show/season_state"
+      index: 1
+    - name: query
+      type: string
       index: 2
-    - name: meter
-      type: MeterPage
-      import: ./main/publisher/meter/page
+- kind: Message
+  name: SeasonDetailsPageRl
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: UsagePageRl
+  fields:
+    - name: days
+      type: DaysRange
+      import: ./range
+      index: 1
+    - name: months
+      type: MonthsRange
+      import: ./range
+      index: 2
+- kind: Message
+  name: PublisherPageRl
+  fields:
+    - name: list
+      type: ListPageRl
+      index: 1
+    - name: search
+      type: SearchPageRl
+      index: 2
+    - name: create
+      type: Empty
+      import: ./empty
       index: 3
+    - name: seasonDetails
+      type: SeasonDetailsPageRl
+      index: 4
+    - name: usage
+      type: UsagePageRl
+      index: 5

@@ -1,5 +1,5 @@
 - kind: Message
-  name: AccountPage
+  name: AccountPageRl
   fields:
     - name: profile
       type: Empty

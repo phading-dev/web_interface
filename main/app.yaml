@@ -1,23 +1,24 @@
 - kind: Message
-  name: MainApp
+  name: ChooseAccountPageRl
   fields:
-    - name: auth
-      type: AuthPage
-      import: ./main/auth/page
+    - name: accountId
+      type: string
       index: 1
+- kind: Message
+  name: MainAppRl
+  fields:
     - name: chooseAccount
-      type: ChooseAccountPage
-      import: ./main/choose_account/page
-      index: 2
+      type: ChooseAccountPageRl
+      index: 1
     - name: account
-      type: AccountPage
+      type: AccountPageRl
       import: ./main/account/page
-      index: 3
+      index: 2
     - name: consumer
-      type: ConsumerPage
+      type: ConsumerPageRl
       import: ./main/consumer/page
-      index: 4
+      index: 3
     - name: publisher
-      type: PublisherPage
+      type: PublisherPageRl
       import: ./main/publisher/page
-      index: 5
+      index: 4

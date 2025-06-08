@@ -1,17 +1,16 @@
-import { APP, App } from "./app";
+import { APP_RL, AppRl } from "./app";
 import { PARAM_KEY } from "./constants";
 import { destringifyMessage } from "@selfage/message/stringifier";
 
-export function parse(thisWindow: Window = window): App {
-  let searchParams = new URLSearchParams(thisWindow.location.search);
-  let value = searchParams.get(PARAM_KEY);
-  let obj: any;
+export function parseUrl(thisWindow: Window): AppRl {
+  let value = new URLSearchParams(thisWindow.location.search).get(PARAM_KEY);
+  let rl: AppRl;
   if (value) {
     try {
-      obj = JSON.parse(value);
+      rl = destringifyMessage(value, APP_RL);
     } catch (e) {
       // Ignore
     }
   }
-  return destringifyMessage(obj, APP);
+  return rl;
 }
