@@ -1,6 +1,6 @@
 {
   "name": "@phading/web_interface",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "The interface of Web UI.",
   "repository": {
     "type": "git",
@@ -19,13 +19,13 @@
   ],
   "devDependencies": {
     "@selfage/cli": "^5.0.3",
-    "@selfage/generator_cli": "^4.3.11",
+    "@selfage/generator_cli": "^4.4.2",
     "@selfage/tsconfig": "^1.1.0",
     "@types/node": "^22.5.4",
     "typescript": "^5.6.2"
   },
   "dependencies": {
-    "@phading/product_service_interface": "^1.1.13",
-    "@selfage/message": "^3.5.6"
+    "@phading/product_service_interface": "^1.1.15",
+    "@selfage/message": "^3.5.10"
   }
 }

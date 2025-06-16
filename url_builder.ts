@@ -9,6 +9,7 @@ export function buildUrl(
   extraParams?: Array<[string, string]>,
 ): string {
   let url = new URL(origin);
+  // Assumes the path is always "/".
   url.searchParams.set(PARAM_KEY, stringifyMessage(value, APP_RL));
   if (extraParams) {
     extraParams.forEach(([key, value]) => {
