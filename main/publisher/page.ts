@@ -1,6 +1,5 @@
 import { SeasonState, SEASON_STATE } from '@phading/product_service_interface/show/season_state';
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { DaysRange, DAYS_RANGE, MonthsRange, MONTHS_RANGE } from '../../range';
 import { Empty, EMPTY } from '../../empty';
 
 export interface ListPageRl {
@@ -34,12 +33,12 @@ export let SEARCH_PAGE_RL: MessageDescriptor<SearchPageRl> = {
   }],
 };
 
-export interface SeasonDetailsPageRl {
+export interface SeasonDetailsPage {
   seasonId?: string,
 }
 
-export let SEASON_DETAILS_PAGE_RL: MessageDescriptor<SeasonDetailsPageRl> = {
-  name: 'SeasonDetailsPageRl',
+export let SEASON_DETAILS_PAGE: MessageDescriptor<SeasonDetailsPage> = {
+  name: 'SeasonDetailsPage',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -47,21 +46,21 @@ export let SEASON_DETAILS_PAGE_RL: MessageDescriptor<SeasonDetailsPageRl> = {
   }],
 };
 
-export interface UsagePageRl {
-  days?: DaysRange,
-  months?: MonthsRange,
+export interface EpisodeDetailsPage {
+  seasonId?: string,
+  episodeId?: string,
 }
 
-export let USAGE_PAGE_RL: MessageDescriptor<UsagePageRl> = {
-  name: 'UsagePageRl',
+export let EPISODE_DETAILS_PAGE: MessageDescriptor<EpisodeDetailsPage> = {
+  name: 'EpisodeDetailsPage',
   fields: [{
-    name: 'days',
+    name: 'seasonId',
     index: 1,
-    messageType: DAYS_RANGE,
+    primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'months',
+    name: 'episodeId',
     index: 2,
-    messageType: MONTHS_RANGE,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
@@ -69,8 +68,9 @@ export interface PublisherPageRl {
   list?: ListPageRl,
   search?: SearchPageRl,
   create?: Empty,
-  seasonDetails?: SeasonDetailsPageRl,
-  usage?: UsagePageRl,
+  seasonDetails?: SeasonDetailsPage,
+  episodeDetails?: EpisodeDetailsPage,
+  stats?: Empty,
 }
 
 export let PUBLISHER_PAGE_RL: MessageDescriptor<PublisherPageRl> = {
@@ -90,10 +90,14 @@ export let PUBLISHER_PAGE_RL: MessageDescriptor<PublisherPageRl> = {
   }, {
     name: 'seasonDetails',
     index: 4,
-    messageType: SEASON_DETAILS_PAGE_RL,
+    messageType: SEASON_DETAILS_PAGE,
   }, {
-    name: 'usage',
+    name: 'episodeDetails',
     index: 5,
-    messageType: USAGE_PAGE_RL,
+    messageType: EPISODE_DETAILS_PAGE,
+  }, {
+    name: 'stats',
+    index: 6,
+    messageType: EMPTY,
   }],
 };

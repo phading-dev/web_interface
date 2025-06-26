@@ -16,21 +16,19 @@
       type: string
       index: 2
 - kind: Message
-  name: SeasonDetailsPageRl
+  name: SeasonDetailsPage
   fields:
     - name: seasonId
       type: string
       index: 1
 - kind: Message
-  name: UsagePageRl
+  name: EpisodeDetailsPage
   fields:
-    - name: days
-      type: DaysRange
-      import: ./range
+    - name: seasonId
+      type: string
       index: 1
-    - name: months
-      type: MonthsRange
-      import: ./range
+    - name: episodeId
+      type: string
       index: 2
 - kind: Message
   name: PublisherPageRl
@@ -46,8 +44,12 @@
       import: ./empty
       index: 3
     - name: seasonDetails
-      type: SeasonDetailsPageRl
+      type: SeasonDetailsPage
       index: 4
-    - name: usage
-      type: UsagePageRl
+    - name: episodeDetails
+      type: EpisodeDetailsPage
       index: 5
+    - name: stats
+      type: Empty
+      import: ./empty
+      index: 6

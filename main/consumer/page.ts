@@ -17,13 +17,13 @@ export let SEARCH_TARGET: EnumDescriptor<SearchTarget> = {
   }]
 }
 
-export interface SearchPageRl {
+export interface SearchPage {
   searchTarget?: SearchTarget,
   query?: string,
 }
 
-export let SEARCH_PAGE_RL: MessageDescriptor<SearchPageRl> = {
-  name: 'SearchPageRl',
+export let SEARCH_PAGE: MessageDescriptor<SearchPage> = {
+  name: 'SearchPage',
   fields: [{
     name: 'searchTarget',
     index: 1,
@@ -35,12 +35,12 @@ export let SEARCH_PAGE_RL: MessageDescriptor<SearchPageRl> = {
   }],
 };
 
-export interface SeasonDetailsPageRl {
+export interface SeasonDetailsPage {
   seasonId?: string,
 }
 
-export let SEASON_DETAILS_PAGE_RL: MessageDescriptor<SeasonDetailsPageRl> = {
-  name: 'SeasonDetailsPageRl',
+export let SEASON_DETAILS_PAGE: MessageDescriptor<SeasonDetailsPage> = {
+  name: 'SeasonDetailsPage',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -48,13 +48,13 @@ export let SEASON_DETAILS_PAGE_RL: MessageDescriptor<SeasonDetailsPageRl> = {
   }],
 };
 
-export interface PlayPageRl {
+export interface PlayPage {
   seasonId?: string,
   episodeId?: string,
 }
 
-export let PLAY_PAGE_RL: MessageDescriptor<PlayPageRl> = {
-  name: 'PlayPageRl',
+export let PLAY_PAGE: MessageDescriptor<PlayPage> = {
+  name: 'PlayPage',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -66,12 +66,12 @@ export let PLAY_PAGE_RL: MessageDescriptor<PlayPageRl> = {
   }],
 };
 
-export interface PublisherShowroomPageRl {
+export interface PublisherShowroomPage {
   accountId?: string,
 }
 
-export let PUBLISHER_SHOWROOM_PAGE_RL: MessageDescriptor<PublisherShowroomPageRl> = {
-  name: 'PublisherShowroomPageRl',
+export let PUBLISHER_SHOWROOM_PAGE: MessageDescriptor<PublisherShowroomPage> = {
+  name: 'PublisherShowroomPage',
   fields: [{
     name: 'accountId',
     index: 1,
@@ -83,10 +83,10 @@ export interface ConsumerPageRl {
   home?: Empty,
   listTopRated?: Empty,
   listRecentPremieres?: Empty,
-  search?: SearchPageRl,
-  seasonDetails?: SeasonDetailsPageRl,
-  play?: PlayPageRl,
-  publisherShowroom?: PublisherShowroomPageRl,
+  search?: SearchPage,
+  seasonDetails?: SeasonDetailsPage,
+  play?: PlayPage,
+  publisherShowroom?: PublisherShowroomPage,
   history?: Empty,
   watchLater?: Empty,
   usage?: Empty,
@@ -109,19 +109,19 @@ export let CONSUMER_PAGE_RL: MessageDescriptor<ConsumerPageRl> = {
   }, {
     name: 'search',
     index: 4,
-    messageType: SEARCH_PAGE_RL,
+    messageType: SEARCH_PAGE,
   }, {
     name: 'seasonDetails',
     index: 5,
-    messageType: SEASON_DETAILS_PAGE_RL,
+    messageType: SEASON_DETAILS_PAGE,
   }, {
     name: 'play',
     index: 6,
-    messageType: PLAY_PAGE_RL,
+    messageType: PLAY_PAGE,
   }, {
     name: 'publisherShowroom',
     index: 7,
-    messageType: PUBLISHER_SHOWROOM_PAGE_RL,
+    messageType: PUBLISHER_SHOWROOM_PAGE,
   }, {
     name: 'history',
     index: 8,

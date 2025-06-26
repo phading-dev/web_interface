@@ -3,12 +3,12 @@ import { AccountPageRl, ACCOUNT_PAGE_RL } from './account/page';
 import { ConsumerPageRl, CONSUMER_PAGE_RL } from './consumer/page';
 import { PublisherPageRl, PUBLISHER_PAGE_RL } from './publisher/page';
 
-export interface ChooseAccountPageRl {
+export interface ChooseAccountPage {
   accountId?: string,
 }
 
-export let CHOOSE_ACCOUNT_PAGE_RL: MessageDescriptor<ChooseAccountPageRl> = {
-  name: 'ChooseAccountPageRl',
+export let CHOOSE_ACCOUNT_PAGE: MessageDescriptor<ChooseAccountPage> = {
+  name: 'ChooseAccountPage',
   fields: [{
     name: 'accountId',
     index: 1,
@@ -17,7 +17,7 @@ export let CHOOSE_ACCOUNT_PAGE_RL: MessageDescriptor<ChooseAccountPageRl> = {
 };
 
 export interface MainAppRl {
-  chooseAccount?: ChooseAccountPageRl,
+  chooseAccount?: ChooseAccountPage,
   account?: AccountPageRl,
   consumer?: ConsumerPageRl,
   publisher?: PublisherPageRl,
@@ -28,7 +28,7 @@ export let MAIN_APP_RL: MessageDescriptor<MainAppRl> = {
   fields: [{
     name: 'chooseAccount',
     index: 1,
-    messageType: CHOOSE_ACCOUNT_PAGE_RL,
+    messageType: CHOOSE_ACCOUNT_PAGE,
   }, {
     name: 'account',
     index: 2,

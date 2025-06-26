@@ -6,7 +6,7 @@
     - name: PUBLISHER
       value: 2
 - kind: Message
-  name: SearchPageRl
+  name: SearchPage
   fields:
     - name: searchTarget
       type: SearchTarget
@@ -15,13 +15,13 @@
       type: string
       index: 2
 - kind: Message
-  name: SeasonDetailsPageRl
+  name: SeasonDetailsPage
   fields:
     - name: seasonId
       type: string
       index: 1
 - kind: Message
-  name: PlayPageRl
+  name: PlayPage
   fields:
     - name: seasonId
       type: string
@@ -30,7 +30,7 @@
       type: string
       index: 2
 - kind: Message
-  name: PublisherShowroomPageRl
+  name: PublisherShowroomPage
   fields:
     - name: accountId
       type: string
@@ -51,16 +51,16 @@
       import: ./empty
       index: 3
     - name: search
-      type: SearchPageRl
+      type: SearchPage
       index: 4
     - name: seasonDetails
-      type: SeasonDetailsPageRl
+      type: SeasonDetailsPage
       index: 5
     - name: play
-      type: PlayPageRl
+      type: PlayPage
       index: 6
     - name: publisherShowroom
-      type: PublisherShowroomPageRl
+      type: PublisherShowroomPage
       index: 7
     - name: history
       type: Empty

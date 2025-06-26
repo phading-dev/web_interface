@@ -1,5 +1,5 @@
 - kind: Message
-  name: ChooseAccountPageRl
+  name: ChooseAccountPage
   fields:
     - name: accountId
       type: string
@@ -8,7 +8,7 @@
   name: MainAppRl
   fields:
     - name: chooseAccount
-      type: ChooseAccountPageRl
+      type: ChooseAccountPage
       index: 1
     - name: account
       type: AccountPageRl
