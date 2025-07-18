@@ -14,23 +14,9 @@ export let REPLACE_PRIMARY_PAYMENT_METHOD_RL: MessageDescriptor<ReplacePrimaryPa
   }],
 };
 
-export interface SetConnectedAccountOnboardedRl {
-  accountId?: string,
-}
-
-export let SET_CONNECTED_ACCOUNT_ONBOARDED_RL: MessageDescriptor<SetConnectedAccountOnboardedRl> = {
-  name: 'SetConnectedAccountOnboardedRl',
-  fields: [{
-    name: 'accountId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
 export interface AppRl {
   main?: MainAppRl,
   replacePrimaryPaymentMethod?: ReplacePrimaryPaymentMethodRl,
-  setConnectedAccountOnboarded?: SetConnectedAccountOnboardedRl,
 }
 
 export let APP_RL: MessageDescriptor<AppRl> = {
@@ -43,9 +29,5 @@ export let APP_RL: MessageDescriptor<AppRl> = {
     name: 'replacePrimaryPaymentMethod',
     index: 2,
     messageType: REPLACE_PRIMARY_PAYMENT_METHOD_RL,
-  }, {
-    name: 'setConnectedAccountOnboarded',
-    index: 3,
-    messageType: SET_CONNECTED_ACCOUNT_ONBOARDED_RL,
   }],
 };
