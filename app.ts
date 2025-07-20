@@ -14,9 +14,37 @@ export let REPLACE_PRIMARY_PAYMENT_METHOD_RL: MessageDescriptor<ReplacePrimaryPa
   }],
 };
 
+export interface VerifyEmailRl {
+  tokenId?: string,
+}
+
+export let VERIFY_EMAIL_RL: MessageDescriptor<VerifyEmailRl> = {
+  name: 'VerifyEmailRl',
+  fields: [{
+    name: 'tokenId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface ResetPasswordRl {
+  tokenId?: string,
+}
+
+export let RESET_PASSWORD_RL: MessageDescriptor<ResetPasswordRl> = {
+  name: 'ResetPasswordRl',
+  fields: [{
+    name: 'tokenId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
 export interface AppRl {
   main?: MainAppRl,
   replacePrimaryPaymentMethod?: ReplacePrimaryPaymentMethodRl,
+  verifyEmail?: VerifyEmailRl,
+  resetPassword?: ResetPasswordRl,
 }
 
 export let APP_RL: MessageDescriptor<AppRl> = {
@@ -29,5 +57,13 @@ export let APP_RL: MessageDescriptor<AppRl> = {
     name: 'replacePrimaryPaymentMethod',
     index: 2,
     messageType: REPLACE_PRIMARY_PAYMENT_METHOD_RL,
+  }, {
+    name: 'verifyEmail',
+    index: 3,
+    messageType: VERIFY_EMAIL_RL,
+  }, {
+    name: 'resetPassword',
+    index: 4,
+    messageType: RESET_PASSWORD_RL,
   }],
 };

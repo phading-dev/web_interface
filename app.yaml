@@ -5,6 +5,18 @@
       type: string
       index: 1
 - kind: Message
+  name: VerifyEmailRl
+  fields:
+    - name: tokenId
+      type: string
+      index: 1
+- kind: Message
+  name: ResetPasswordRl
+  fields:
+    - name: tokenId
+      type: string
+      index: 1
+- kind: Message
   name: AppRl
   fields:
     - name: main
@@ -14,3 +26,9 @@
     - name: replacePrimaryPaymentMethod
       type: ReplacePrimaryPaymentMethodRl
       index: 2
+    - name: verifyEmail
+      type: VerifyEmailRl
+      index: 3
+    - name: resetPassword
+      type: ResetPasswordRl
+      index: 4
