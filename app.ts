@@ -1,5 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { MainAppRl, MAIN_APP_RL } from './main/app';
+import { Empty, EMPTY } from './empty';
 
 export interface ReplacePrimaryPaymentMethodRl {
   accountId?: string,
@@ -45,6 +46,7 @@ export interface AppRl {
   replacePrimaryPaymentMethod?: ReplacePrimaryPaymentMethodRl,
   verifyEmail?: VerifyEmailRl,
   resetPassword?: ResetPasswordRl,
+  marketing?: Empty,
 }
 
 export let APP_RL: MessageDescriptor<AppRl> = {
@@ -65,5 +67,9 @@ export let APP_RL: MessageDescriptor<AppRl> = {
     name: 'resetPassword',
     index: 4,
     messageType: RESET_PASSWORD_RL,
+  }, {
+    name: 'marketing',
+    index: 5,
+    messageType: EMPTY,
   }],
 };
